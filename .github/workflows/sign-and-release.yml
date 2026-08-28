@@ -104,9 +104,9 @@ jobs:
           
           KEYCHAIN_PATH="$SIGN_DIR/build.keychain-db"
           
-          printf '%s' "$CERTIFICATE_BASE64" | tr -d '[:space:]' | base64 -D > "$CERT_PATH"
+          printf '%s' "${CERTIFICATE_BASE64#*,}" | tr -d '[:space:]' | base64 -D > "$CERT_PATH"
           
-          printf '%s' "$PROFILE_BASE64" | tr -d '[:space:]' | base64 -D > "$PROFILE_PATH"
+          printf '%s' "${PROFILE_BASE64#*,}" | tr -d '[:space:]' | base64 -D > "$PROFILE_PATH"
           
           test -s "$CERT_PATH"
           
